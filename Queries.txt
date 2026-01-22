@@ -1,0 +1,64 @@
+===========================================
+SQL CRUD OPERATIONS - STUDENTS TABLE
+===========================================
+
+
+CREATE TABLE students (
+    id SERIAL PRIMARY KEY,
+    name TEXT NOT NULL,
+    email TEXT UNIQUE NOT NULL,
+    age INTEGER NOT NULL,
+    course TEXT NOT NULL,
+    created_at TIMESTAMP DEFAULT NOW()
+);
+
+INSERT INTO students (name, email, age, course) VALUES
+('NagaLakshmi', 'nagalakshmi1806@gmail.com', 23, 'Computer Science'),
+('Bobby', 'bobbby@gmail.com', 19, 'Mathematics'),
+('Charan', 'charan@gmail.com', 22, 'Physics'),
+('Divya', 'divya@gmail.com', 20, 'Engineering'),
+('Manikanta', 'Manikanta@gmail.com', 24, 'Business Administration'),
+('Karthik', 'Karthik@gmail.com', 18, 'Psychology'),
+('Girish', 'girish@gmail.com', 21, 'Biology'),
+('Hairsh', 'harish@gmail.com', 24, 'Chemistry'),
+('Thomas', 'thomas@gmail.com', 19, 'Economics'),
+('Jayadev', 'jayadev@gmail.com', 20, 'English Literature');
+
+
+
+SELECT COUNT(*) as total_students FROM students;
+
+SELECT * FROM students ORDER BY id;
+
+SELECT * FROM students WHERE age > 20 ORDER BY age DESC;
+
+SELECT name, email FROM students ORDER BY name;
+
+SELECT * FROM students WHERE course = 'Computer Science';
+
+SELECT * FROM students WHERE course = 'Engineering';
+
+UPDATE students 
+SET age = 22 
+WHERE email = 'nagalakshmi1806@gmail.com';
+SELECT * FROM students WHERE email = 'nagalakshmi1806@gmail.com';
+
+
+UPDATE students 
+SET course = 'Data Science' 
+WHERE course = 'Computer Science';
+
+SELECT * FROM students WHERE course = 'Data Science';
+
+
+SELECT * FROM students WHERE id = 6;
+
+DELETE FROM students WHERE id =6;
+
+SELECT * FROM students ORDER BY id;
+
+DELETE FROM students WHERE age <= 19;
+
+SELECT COUNT(*) as remaining_students, AVG(age) as average_age FROM students;
+
+
